@@ -17,6 +17,10 @@ def test_successful_product_checkout(page, username, password):
 
     product_selector_page.productSelectorFlow()
 
+    badge_number = product_selector_page.get_badge_number()
+    assert badge_number == '2', f"Expected badge number to be 2, but got {badge_number}"
+    print(badge_number)
+
     assert product_selector_page.successful_navigate_to_checkout().is_visible(), "Failed to navigate to checkout"
 
     checkout_page.checkoutpage_flow("Stefan", "Radev", "1309")
